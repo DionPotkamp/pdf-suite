@@ -1,0 +1,50 @@
+{
+  "name": "js-merger",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "npm run clean && tsc && npm run copy && esbuild src/index.ts --outfile=dist/index.js --bundle --sourcemap",
+    "build:prod": "npm run clean && tsc && npm run copy && esbuild src/index.ts --outfile=dist/index.js --bundle --minify",
+    "watch": "concurrently \"tsc --watch\" \"esbuild src/index.ts --outfile=dist/index.js --bundle --sourcemap --watch\"",
+    "start": "npm run build && http-server ./dist",
+    "copy": "node tools/copy.js",
+    "clean": "node tools/clean.js",
+    "lint": "eslint src --ext .js,.ts",
+    "lint:fix": "eslint src --ext .js,.ts --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DionPotkamp/pdf-suite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DionPotkamp/pdf-suite/issues"
+  },
+  "homepage": "https://github.com/DionPotkamp/pdf-suite#readme",
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^4.10.38",
+    "sortablejs": "^1.15.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/node": "^22.13.8",
+    "@types/sortablejs": "^1.15.8",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "concurrently": "^9.1.2",
+    "copyfiles": "^2.4.1",
+    "esbuild": "^0.25.0",
+    "eslint": "^9.21.0",
+    "globals": "^16.0.0",
+    "http-server": "^14.1.1",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.25.0"
+  },
+  "engines": {
+    "node": ">=23.0.0"
+  }
+}
